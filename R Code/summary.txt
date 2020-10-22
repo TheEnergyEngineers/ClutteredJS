@@ -1,0 +1,10 @@
+
+> summary(cluttered$batterystats_Joule_calculated)
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  47.79   48.94   50.33   52.09   54.04   67.52 
+
+> summary(decluttered$batterystats_Joule_calculated) 
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+  47.43   48.92   50.99   52.37   54.48   67.99 
+
+> sink()

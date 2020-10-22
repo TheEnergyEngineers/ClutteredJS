@@ -6,7 +6,7 @@ import paths
 from .BrowserFactory import BrowserFactory
 from .Experiment import Experiment
 from .util import makedirs, slugify_dir
-
+from . import Adb
 
 class WebExperiment(Experiment):
     def __init__(self, config, progress, restart):
@@ -52,11 +52,12 @@ class WebExperiment(Experiment):
 
     def interaction(self, device, path, run, *args, **kwargs):
         browser = args[0]
+        
+        # Update path for JSCleaned
+        path = path + "/?JSCleaner.html"
         browser.load_url(device, path)
-        time.sleep(5)
         super(WebExperiment, self).interaction(device, path, run, *args, **kwargs)
 
-        # TODO: Fix web experiments running longer than self.duration
         time.sleep(self.duration)
 
     def after_run(self, device, path, run, *args, **kwargs):

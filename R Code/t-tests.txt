@@ -1,0 +1,77 @@
+
+> t.test(cluttered$batterystats_Joule_calculated, decluttered$batterystats_Joule_calculated, paired = TRUE) 
+
+	Paired t-test
+
+data:  cluttered$batterystats_Joule_calculated and decluttered$batterystats_Joule_calculated
+t = -1.4941, df = 26, p-value = 0.1472
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.6602331  0.1044269
+sample estimates:
+mean of the differences 
+             -0.2779031 
+
+
+> #Without taking page size into account: the energy consumption of the decluttered pages are absolutely not smaller, p = 0.9362, its almost the signi .... [TRUNCATED] 
+
+	Paired t-test
+
+data:  cluttered$batterystats_Joule_calculated[cluttered$size == "S"] and decluttered$batterystats_Joule_calculated[cluttered$size == "S"]
+t = 0.44249, df = 8, p-value = 0.6699
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.3478274  0.5130098
+sample estimates:
+mean of the differences 
+              0.0825912 
+
+
+> t.test(cluttered$batterystats_Joule_calculated[cluttered$size=='M'], decluttered$batterystats_Joule_calculated[cluttered$size=='M'], paired = TRUE)
+
+	Paired t-test
+
+data:  cluttered$batterystats_Joule_calculated[cluttered$size == "M"] and decluttered$batterystats_Joule_calculated[cluttered$size == "M"]
+t = -3.1296, df = 8, p-value = 0.01402
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.0313856 -0.1562752
+sample estimates:
+mean of the differences 
+             -0.5938304 
+
+
+> t.test(cluttered$batterystats_Joule_calculated[cluttered$size=='L'], decluttered$batterystats_Joule_calculated[cluttered$size=='L'], paired = TRUE)
+
+	Paired t-test
+
+data:  cluttered$batterystats_Joule_calculated[cluttered$size == "L"] and decluttered$batterystats_Joule_calculated[cluttered$size == "L"]
+t = -0.66169, df = 8, p-value = 0.5268
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -1.446283  0.801343
+sample estimates:
+mean of the differences 
+             -0.3224701 
+
+
+> #two way anova with repeated measures
+> #res.aov2 <- aov(batterystats_Joule_calculated ~ cluttered + size, data = combined)
+> res.aov2 <- aov(batter .... [TRUNCATED] 
+
+> summary(res.aov2)
+
+Error: subject
+          Df Sum Sq Mean Sq F value Pr(>F)  
+size       2  331.5  165.74   3.964 0.0325 *
+Residuals 24 1003.5   41.81                 
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Error: Within
+          Df Sum Sq Mean Sq F value Pr(>F)
+cluttered  1  1.043   1.043   2.232  0.147
+Residuals 26 12.143   0.467               
+
+> # we dont find a significant difference in clutterd vs decluttered. But we do find it in size
+> sink()
