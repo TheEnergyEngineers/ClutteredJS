@@ -37,7 +37,7 @@ The cluttered and decluttered web applications are hosted using [MITM Proxy](htt
 
 ### 3.3 Execution and Output
 ```
-python3 android-runner android-runner/ClutteredJS/config.json
+python3 ClutteredJS ClutteredJS/src/config.json
 ```
 
 The experiment can be executed using the above command and the corresponding output for the run will be stored in `ClutteredJS/src/output` folder.
