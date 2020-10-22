@@ -28,7 +28,7 @@ The list of available decluttered webpages for the experiment is provided in the
 
 ### 3.1 Android Runner
 
-For the execution of the experiment, we used [Android Runner](https://github.com/S2-group/android-runner) framework which allows automatic execution of measurement-based experiments on native and web apps running on Android devices. All the experiment-specific Python scripts and configs are included in the [android-runner/ClutteredJS](./android-runner/ClutteredJS) folder.
+For the execution of the experiment, we used [Android Runner](https://github.com/S2-group/android-runner) framework which allows automatic execution of measurement-based experiments on native and web apps running on Android devices. All the experiment-specific Python scripts and configs are included in the [ClutteredJS/src](./ClutteredJS/src) folder.
 
 ### 3.2 MITM Proxy
 
@@ -40,8 +40,8 @@ The cluttered and decluttered web applications are hosted using [MITM Proxy](htt
 python3 android-runner android-runner/ClutteredJS/config.json
 ```
 
-The experiment can be executed using the above command and the corresponding output for the run will be stored in `android-runner/ClutteredJS/output` folder.
-The output of experiments of cluttered and decluttered webpages are stored in [android-runner/ClutteredJS/output.nw](./android-runner/ClutteredJS/output.nw) and [android-runner/ClutteredJS/output.jsc](./android-runner/ClutteredJS/output.jsc) folders respectively.
+The experiment can be executed using the above command and the corresponding output for the run will be stored in `ClutteredJS/src/output` folder.
+The output of experiments of cluttered and decluttered webpages are stored in [ClutteredJS/src/output.nw](./ClutteredJS/src/output.nw) and [ClutteredJS/src/output.jsc](./ClutteredJS/src/output.jsc) folders respectively.
 
 ## 4. Results and Analysis
 
