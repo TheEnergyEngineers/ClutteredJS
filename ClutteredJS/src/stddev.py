@@ -6,7 +6,7 @@ import csv
 OUTPUT_FOLDERS = {"cluttered":"output.nw", "de-cluttered":"output.jsc"}
 
 def find_paths(folder):
-    return [x[0] for x in os.walk('output.nw') if 'batterystats' in x[0]]
+    return [x[0] for x in os.walk(folder) if 'batterystats' in x[0]]
 
 def calc_stat(path):
     file_list = [ x for x in os.listdir(path) if 'Joule_' in x]
