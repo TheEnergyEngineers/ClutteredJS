@@ -45,7 +45,7 @@ The output of the experiments of the cluttered and de-cluttered mobile web apps 
 
 ## 4. Results and Analysis
 
-The output of the experiment is [analysed](./R%20Code), plotted, and tested using paired t-tests. Detailed analysis and results of the experiment are included in the [Report](./Report) folder.
+The output of the experiment is analyzed, plotted, and tested in [R](./R%20Code) Detailed analysis and results of the experiment are included in the [Report](./Report) folder.
 
 ## 5. Authors and Acknowledgments
 
