@@ -32,7 +32,7 @@ For the execution of the experiment, we used the [Android Runner](https://github
 
 ### 3.2 MITM Proxy
 
-The cluttered and decluttered web applications are hosted using [MITM Proxy](https://mitmproxy.org/) with separate ports for each kind. The mitm proxy certificate is installed in the android device after configuring it with appropriate IP address and port for the mitmproxy.
+The cluttered and de-cluttered mobile web apps are hosted using [MITM Proxy](https://mitmproxy.org/) with separate ports for each kind. The MITM proxy certificate is installed in the android device after configuring it with the appropriate IP address and port for the MITM proxy.
 
 
 ### 3.3 Execution and Output
