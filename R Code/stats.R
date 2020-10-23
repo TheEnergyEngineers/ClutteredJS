@@ -10,7 +10,7 @@ sink()
 
 #plotting
 pdf("pl1.pdf", width = 9, height = 7)
-plot(cluttered$batterystats_Joule_calculated,pch=4,col="blue",ylab = "Energy consumption (joules)");points(decluttered$batterystats_Joule_calculated, col="green");legend("topleft", c("decluttered","cluttered"),col=c("green","blue"),pch=c(1,4))
+plot(cluttered$batterystats_Joule_calculated,pch=4,col="blue",ylab = "Energy consumption (joules)");points(decluttered$batterystats_Joule_calculated, col="red");legend("topleft", c("decluttered","cluttered"),col=c("red","blue"),pch=c(1,4))
 #frm this ew can already observe that the results are pretty close to each other
 dev.off()
 # create for cluttered and decluttered boxplots with joule used
@@ -20,7 +20,7 @@ pdf("pl2.pdf", width = 9, height = 7)
 boxplot(decluttered$batterystats_Joule_calculated, cluttered$batterystats_Joule_calculated,
         names = c("Decluttered","Cluttered"),
         ylab = "Energy consumption (joules)",
-        col = c("green","blue"))
+        col = c("red","blue"))
 dev.off()
 #from this we can already see that the mean of cluttered is lower
 
@@ -34,7 +34,7 @@ boxplot(batterystats_Joule_calculated~size*cluttered, data=combined,
         xlab = "Page size and treament (0=decluttered, 1=cluttered)",
         ylab = "Energy consumption (joules)", 
         main = "Energy consumption per page size and treatment",
-        col = c("green","green","green","blue","blue","blue"))
+        col = c("red","red","red","blue","blue","blue"))
 dev.off()
 # normal test
 # shapiro.test(cluttered$batterystats_Joule_calculated) # it should be p > 0.05 thus not normal
