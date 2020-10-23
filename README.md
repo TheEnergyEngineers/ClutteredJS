@@ -8,7 +8,7 @@ Mobile phones are a major contributor to internet traffic around the world. Alth
 
 ## 2. Experiment Setup
 
-The list of (cluttered and de-cluttered) mobile web apps that we used in the experiment is provided in the [Subject Selection Code](./Subject%20Selection%20Code) folder. The URLs are then [analyzed](./Subject%20Selection%20Code/subjectSelection.ipynb) for subject selection.
+The list of (cluttered and de-cluttered) mobile web apps that we used in the experiment is provided in the [Subject Selection Code](./Subject%20Selection%20Code) folder. The URLs are then analyzed for subject selection (see [Subject Selection](./Subject%20Selection%20Code/subjectSelection.ipynb)).
 
 ### 2.1 System Setup
 
@@ -45,7 +45,7 @@ The output of the experiments of the cluttered and de-cluttered mobile web apps 
 
 ## 4. Results and Analysis
 
-The output of the experiment is analyzed, plotted, and tested in [R](./R%20Code) Detailed analysis and results of the experiment are included in the [Report](./Report) folder.
+The output of the experiment is analyzed, plotted, and tested in R (see [R Code](./R%20Code)). Detailed analysis and results of the experiment are included in the [Report](./Report) folder.
 
 ## 5. Authors and Acknowledgments
 
