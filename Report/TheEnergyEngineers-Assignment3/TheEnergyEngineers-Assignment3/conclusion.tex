@@ -1,0 +1,13 @@
+\section{Conclusions}\label{sec:conclusions}
+
+% One brief paragraph for summarizing the main findings of the report.
+In this study, we analyzed the energy consumption of cluttered JS code in mobile web apps. To do so, we randomly selected 27 subjects from the majestic million set. The subjects were de-cluttered using JSCleaner \cite{chaqfeh2020jscleaner}. We utilized Android Runner \cite{malavolta2020runner} to orchestrate and manage the experiment, and the Batterystats profiler to measure the energy consumption. Furthermore, we used statistical tests to conclude whether there is a significant difference in the energy consumption of the cluttered and de-cluttered mobile web apps. From these tests, no significant difference was found between the energy consumption of the cluttered and de-cluttered mobile web apps. This implies that developers do not need to take the energy consumption into account when applying a de-cluttering engine to their code. Considering that we used a small sample size to perform our experiments and tested solely one de-cluttering algorithm (JSCleaner), future studies are required to support this claim. %
+
+% One brief paragraph about the possible extensions of the performed experiment (imagine that other 3 teams will be assigned to the extension of your experiment).
+Future work could analyze a more extensive set of mobile web apps. Furthermore, the experiments could be performed on more devices (e.g. low- and high-end), operating systems (e.g. both iOS and Android), and browsers (e.g. Chrome, Firefox, Safari). Experiments done using these additions could substantiate the generalizability of the results and conclusions. In addition, more de-cluttering methods should be applied to the mobile web apps to test the difference between the effectiveness of the de-cluttering methods.
+
+% Possible Extensions:
+% 1. More samples
+% 2. Real world setting
+% 3. More devices
+% 4. Apply more/other Cleaning methods

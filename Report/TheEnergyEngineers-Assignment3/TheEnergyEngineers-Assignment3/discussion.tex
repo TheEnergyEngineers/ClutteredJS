@@ -1,0 +1,23 @@
+\section{Discussion}
+
+% Elaborate on the obtained results
+
+In this section, we elaborate on the obtained results and state the implications of these results.
+% intrinsic variability
+First of all, we studied the variance level of the repeated trials. A trial is a combination of a subject (mobile web app) and a treatment (cluttered or de-cluttered). We measured the energy consumption of each trial 15 times to understand the external effects on the measurements. From these results, we learned that most trials were relatively stable (the outputs of the different runs had a low SD). However, few trials did result in a relatively high (between 2 and 6) SD. This can be due to fluctuations in the network quality, internal processes from the phone interfering with the experiment, or measurement errors. The variance in the measurements harms the reliability.
+
+% data distribution
+Second, we investigated the data distribution. We observed that the energy consumption of the cluttered and de-cluttered mobile web apps was relatively similar. Furthermore, we compared the energy consumption for the small, medium, and large mobile web apps. It is striking that the mean energy consumption of the mobile web apps of a medium page size have a higher mean compared to the mobile web apps of a large size. This could be due to the relatively small sample size. % testing normality 
+Next, we tested the normality, from both the Shapiro-Wilk test and the Q-Q plot we concluded that the data is normally distributed.
+
+% paired t-tests
+The main research question of this research is ``\textit{What is the impact of cluttered JavaScript code in mobile web apps with respect to the energy consumption?}''. The null hypothesis states that the mean energy consumption of cluttered mobile web apps is equal to the mean energy consumption of the de-cluttered mobile web apps. In other words, we aim to find out whether cluttered JS code impacts the energy consumption. Using the results presented in Section~\ref{sec:results}, we are unable to reject the null hypothesis as the executed paired t-tests did not find p-values lower than the described values for $\alpha$. The research question is thus answered by claiming that de-cluttering does not impact the energy efficiency of mobile web apps. This claim holds for small, medium, and large mobile web apps.
+
+% Impact into practice (industry) & Make results actionable
+Our results show that cluttered mobile web apps do not influence the energy consumption. In the study presenting JSCleaner \cite{chaqfeh2020jscleaner}, the researchers did find that de-cluttering mobile web apps using JSCleaner reduces the PLT by 30\% and the number of requests and page size by 50\%. It thus seems that the choice of using a de-cluttering tool like JSCleaner depends on the goal. If the goal is reducing the PLT, it is a good decision to apply a de-cluttering tool. However, if the goal is to reduce the energy consumption, developers should not (with the current results in mind) apply such a de-cluttering tool.
+
+% Lessons learnt
+Hence, the lessons learned of our study are that applying JSCleaner has no impact on the energy consumption. However, we do want to emphasize that more research is required to support this claim and generalize this for all de-cluttering methods. A major implication on the validity of the results, and thus the conclusion, is that a relatively small sample size is used and solely one de-cluttering method is applied. 
+
+
+% \textcolor{red}{Page limit: 1}

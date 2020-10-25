@@ -1,0 +1,60 @@
+\section{Threats To Validity}\label{sec:threats}
+
+In this section, we discuss the threats to validity and mitigation measures. Validity is defined as the extent to which results are sound and applicable to the real world \cite{wohlin2012experimentation}. The used validity classification is proposed by Cook and Campbell \cite{cook1979quasi}.
+
+\subsection{Internal Validity}
+
+Internal validity considers the causality between treatment and outcome \cite{wohlin2012experimentation}. 
+
+\noindent \textbf{History}
+To mitigate the effects of history, we ensured that both the cluttered and de-cluttered mobile web apps were cached at the same time. This ensures that the subjects did not change and can be properly compared. Next, the experiment trials are performed within the same time-frame. If this would not be a single type of time-frame, this could harm the validity as executing the experiment in a different time-frame could lead to different results. We mitigated this threat by performing the experiment on a regular day and night (Wednesday to Thursday and no special holiday). This ensured a representative influence of e.g. data-traffic and connectivity. Furthermore, we chose this setup to ensure that the experiment setting is similar in each trial. 
+
+\noindent \textbf{Maturation} 
+To mitigate the effect of maturation, we ensured that after each run possible effects on the smartphone and experiment setup of the previous run are eliminated. This entails that we removed the caches of the web browser and paused the smartphone for 2 minutes after each run to ensure that activated background processes are terminated. 
+
+\noindent \textbf{Selection}
+A few mobile web apps were not available. To ensure that this is not some specific type of subject we checked the mobile web pages that were unavailable manually to understand the issue. The reason was that some mobile web apps did not properly load. This could be due to network issues or internal issues of the proxy server. The omitted mobile web apps were of different topics. However, we cannot be completely certain that this is not a specific type of subject. 
+
+\noindent  \textbf{Reliability of Measures}
+In order to reduce the effects of co-factors and noise, we ensured that the experiment execution was similar for each experiment run. For instance, we requested the mobile web pages from the same proxy, through the same LAN, by the same device, using the same settings (e.g. browser, profiler). Moreover, we used the page size as a blocking factor to mitigate its effect on the results. However, not all experiment factors could be controlled. A threat to the internal validity is the fact that we used an external proxy to retrieve the subjects. Due to time constraints, we did not de-clutter the mobile web apps ourselves. This caused a level of uncertainty and lack of control over the web requests. Moreover, factors such as network instability and background processes within the device were out of our control. We mitigated these effects by turning off irrelevant applications, notifications, network and location services. Furthermore, the phone settings that could impact the energy consumption such as screen brightness remained constant throughout the experiment. To ensure the correctness of our measurements, we used a well-tested framework and profiler to manage our experiment. Finally, to guarantee the reliability of our measurements, we repeated each trial multiple times. The outcomes of the trial are relatively stable (most SDs are between 0 and 1). However, there are outliers with a higher SD. This means that there are other processes interfering with the measurements.
+
+\subsection{External Validity}
+
+External validity concerns the generalizability of the experiment \cite{wohlin2012experimentation}.
+
+\noindent \textbf{Interaction Selection and Treatment}
+To guarantee the generalizability of the results, we selected diverse, real-world mobile web apps. The mobile web apps originate from The Majestic Million\footnote{\url{https://majestic.com/reports/majestic-million}}. This selection contains operational mobile web apps from a wide variety of themes such as e-commerce, news, and sports. From this selection, we generated a random sample of subjects. A threat to the external validity is the relatively small sample size. The random selection mitigates this threat. 
+
+\noindent \textbf{Interaction Setting and Treatment}
+Another threat to the external validity is the controlled research setting. In the real-world, background processes such as push-notifications and location services are enabled. Hence, our experiment setting is not representative of a real-life setting. Furthermore, by ensuring that the research setup remains constant (e.g. using the same device and network connection), we threaten the external validity as, for instance, other devices and network conditions would perform differently. This is an inevitable trade-off between external vs. internal validity. We mitigated this effect by using a new device (Google Pixel 3) in a regular household setting.
+
+\noindent \textbf{Interaction History and Treatment}
+To mitigate the effects of the interaction between history and treatment, we performed the experiment on a regular work-day. As the experiment took a relatively long time to execute, we did run it partly over night. This is a potential threat to the validity.
+
+\subsection{Construct Validity}
+
+Construct validity concerns the relation between theory and observation \cite{wohlin2012experimentation}. 
+
+\noindent \textbf{Inadequate Preoperational Explicitation of Constructs}
+To ensure that the constructs are sufficiently defined, we applied the GQM method \textit{a priori}. This method allowed us to accurately define the goal, research question, and metrics.
+
+\noindent \textbf{Mono-Operation Bias}
+To ensure that we properly measured the effect of cluttered JS code on energy consumption, we measured the energy consumption of both the cluttered and de-cluttered version of the mobile web apps. Furthermore, we executed the experiment on different subjects and repeated each trial 15 times. However, the fact that the JS code is solely de-cluttered by one de-cluttering algorithm (i.e. JSCleaner) harms the validity of the experiment. Further research is required to test the effect of cluttered JS code on energy consumption using other de-cluttering algorithms. 
+
+\noindent \textbf{Mono-Method Bias}
+A threat to the construct validity is the fact that we used one metric (i.e. power consumption) to measure the energy consumption. This effect is mitigated by considering that it is an objective metric rather than a subjective metric.
+
+\subsection{Conclusion Validity}
+
+Conclusion validity concerns whether the relationship between the treatment and outcome is statistically correct and significant \cite{wohlin2012experimentation}.
+
+\noindent \textbf{Low Statistical Power}
+A threat to conclusion validity is our relatively small number of subjects. Due to time constraints, we tested 9 subjects within each category. The outcome of the statistical tests may be erroneous due to the small sample size. To mitigate this effect, future experiments are advised to test a larger sample. 
+
+\noindent \textbf{Violated Assumptions of Statistical Tests}
+A threat to the validity is that normality tests typically have a low power in small sample sizes. Considering our small sample size, it could be that the normality assumption is unjust. We mitigated this effect by detecting normality using two methods, namely, the Shapiro-Wilk test and the Q-Q plot. 
+
+\noindent \textbf{Fishing and The Error Rate}
+In our experiment, we conducted multiple statistical tests. Namely, for mobile web apps with a small, medium, and large page size. To mitigate the error rate of conducting multiple statistical tests, we adjusted the p-values accordingly.
+
+%\textcolor{red}{Page limit: 1}

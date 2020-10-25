@@ -1,0 +1,129 @@
+\section{Experiment Planning}
+
+In this section, we explain how the experiment is laid out. This is done in the following steps: context, subjects, experimental variables, hypothesis, experiment design, and data analysis.
+
+%%% --- Context Selection --- %%%
+
+\subsection{Context Selection}
+
+To characterize the experiments of our study, the four dimension method presented by Wohlin et al.~\cite{wohlin2012experimentation} is used.  
+
+The first dimension regards the choice between on-line and off-line experiments. As the experiments conducted in our study use a local Android device loading pre-developed mobile web apps, the off-line dimension is selected.
+
+The second dimension represents the choice of using students versus professionals as subjects. This dimension is not suitable for our study as we use mobile web apps as subjects. No humans are the subject of the performed experiments.
+
+The third dimension determines if the nature of the experiments are real or toy problems. As the mobile web apps used in this study are collected from real mobile web apps, the experiments and results presented in this paper can be regarded as covering real problems. Moreover, the outcome of our study could also directly impact real problems, i.e. developers could immediately tackle the energy efficiency of their real mobile web apps using a de-cluttering tool.
+
+The fourth and final dimension defines whether the experiments are specific versus general. Our study can be regarded as general as it uses diverse and frequently visited mobile web apps to conduct the experiments. In other words, no specific type of mobile web app is selected.
+
+%%% --- Subjects Selection --- %%%
+
+\subsection{Subjects Selection}\label{subsec:subjects_selection} 
+
+The subject selection is done by a Python script (available through \textcolor{blue}{\url{https://github.com/TheEnergyEngineers/ClutteredJS}}) that reads a CSV file containing $93$ mobile web apps and their corresponding size. The mobile web apps are a \textcolor{blue}{subset of the mobile web apps} used by Chaqfeh et al.~\cite{chaqfeh2020jscleaner} containing $93$ popular mobile web apps. The set is obtained from The Majestic Million\footnote{https://majestic.com/reports/majestic-million} and includes a wide variety of mobile web apps such as: news sites, education, sports, entertainment, travel, and government web apps. This ensures the generalizability of our sample to the real-world population of mobile web apps. The mobile web apps are available on a proxy server provided by Chaqfeh et al. \cite{chaqfeh2020jscleaner}. The proxy server contains both the cluttered mobile web apps and the mobile web apps de-cluttered by JSCleaner. 
+
+To perform the analysis required for the \textcolor{blue}{subject} selection, each mobile web app is downloaded locally using \textit{Resources Saver Extension} for \textit{Google Chrome}\footnote{\url{https://github.com/up209d/ResourcesSaverExt}} after which its size is measured and a \textit{Lines Of Code} analysis is performed using \textit{CLOC}\footnote{\url{https://github.com/AlDanial/cloc}}. \textcolor{blue}{Each page load and download is given one minute for each stage to complete.}
+
+\textcolor{blue}{Before the subjects are selected, some mobile web apps have to be removed from the data set. First, pages with a size of 0 bytes are removed. This size occurs when the page failed to load on the proxy. Second, pages that occur more than once in the dataset are removed. The third group being removed are the pages which \--- according to CLOC \--- do not contain JS, HTML, or CSS code. For all these mobile web apps, CLOC did not report a value for any one of these three programming languages. After visually analyzing the deleted mobile web apps using Google Chrome, we observe that most mobile web apps do not show any visible changes after de-cluttering the mobile web apps. The complete deletion process results in \textcolor{blue}{$74$} mobile web apps that are suitable for analysis.} 
+
+After this cleaning step, the mobile web apps are divided into three groups based on the size of the cluttered mobile web app. These groups are created to control the effect of size on the energy consumption. The groups are created using three quantiles and contain the following size ranges:
+
+\textcolor{blue}{
+\begin{tabular}{lll}
+Small & 0.0 MB - 4.6 MB & (24 mobile web apps)\\
+Medium & 4.7 MB - 7.5 MB & (24 mobile web apps)\\
+Large & 8.1 MB - 46 MB & (26 mobile web apps) 
+\end{tabular}
+}
+
+After this division, the script randomly selects 10 mobile web apps from each group using a pseudo-random number generator\footnote{\url{https://docs.python.org/3/library/random.html}} with a seed of 42. This process completes with a total of 30 mobile web apps (each \textcolor{blue}{mobile web} app is used twice during the experiments, once as the cluttered version and once as the de-cluttered version). The selected mobile web apps and their information is presented in Table \ref{tab:sample_of_subject}.
+
+\textcolor{blue}{From Table \ref{tab:sample_of_subject}, we observe that some de-cluttered mobile web apps are larger compared to the cluttered version. After a visual inspection, we found that most cluttered and de-cluttered mobile web apps do not differ in functionality. Some mobile web apps do show a difference. For example, the cluttered version of `\url{store.steampowered.com}' shows a list of games and their corresponding images. In the de-cluttered version, these games are not loaded. This causes a difference in size between the two versions due to JSCleaner. In the case when the cluttered and de-cluttered versions do not differ in functionality, we often see that the total lines of code (JS, HTML, and CSS) increases in the de-cluttered version compared to the cluttered version. This again could be a side-effect of JSCleaner which alters the code of the cluttered version.}
+
+% 
+\begin{table*}[t]
+\centering
+\tiny
+\textcolor{blue}{
+\begin{tabular}{|l|ll|l|l|lll|lll|}
+\toprule
+ID &                  URL & Cluttered Size & De-cluttered Size & Category & OG LOC JS & OG LOC HTML & OG LOC CSS & DC LOC JS & DC LOC HTML & DC LOC CSS \\
+\midrule
+0  &                 fc2.com &          572KB &           564KB &    Small &      4521 &         326 &       2210 &      4505 &         326 &       2210 \\
+1  &            telegram.org &          920KB &           828KB &    Small &      2794 &         321 &       6494 &       550 &         321 &       6494 \\
+2  &             www.nih.gov &          1.3MB &           2.1MB &    Small &     22457 &           4 &        555 &     29155 &         866 &      12125 \\
+3  &          www.office.com &          1.7MB &            18MB &    Small &     13458 &        1256 &       8119 &    238496 &        1338 &      21820 \\
+4  &          duckduckgo.com &          1.8MB &           360KB &    Small &     35433 &         109 &      10031 &         4 &          98 &      10031 \\
+5  &              www.rt.com &          3.0MB &           2.9MB &    Small &     38487 &        3425 &      21329 &     36237 &        3425 &      21329 \\
+6  &            www.ucsc.edu &          3.3MB &           2.0MB &    Small &     25922 &        4631 &        464 &     11441 &         410 &       4976 \\
+7  &        www.colorado.edu &          3.6MB &           264KB &    Small &     36375 &        4635 &        265 &      1630 &           4 &         80 \\
+8  &             pixabay.com &          4.0MB &           1.3MB &    Small &     34116 &        5417 &       4724 &      9582 &         786 &       4724 \\
+9  &                 utk.edu &          4.2MB &           1.5MB &    Small &     36161 &        5545 &       8506 &     11624 &         921 &       8506 \\\midrule
+10 &       www.sindonews.com &          4.7MB &           2.2MB &   Medium &     60680 &        4189 &       4823 &     23064 &         204 &        616 \\
+11 &            www.osha.gov &          4.7MB &           4.5MB &   Medium &     34327 &        3144 &      19679 &     32073 &        3145 &      19679 \\
+12 &            missouri.edu &          5.6MB &           2.7MB &   Medium &     35247 &        5403 &      15862 &      8301 &         772 &      15862 \\
+13 &         www.booking.com &          6.0MB &           4.1MB &   Medium &     61556 &       10902 &      54391 &     35001 &       10396 &      53983 \\
+14 &            www.mdpi.com &          6.2MB &           3.5MB &   Medium &     41608 &        9578 &      16062 &     17075 &        4947 &      16062 \\
+15 &     www.raspberrypi.org &          6.2MB &           5.9MB &   Medium &     46908 &       16545 &        464 &     44657 &       15820 &        464 \\
+16 &       www.homedepot.com &          6.6MB &           5.5MB &   Medium &     16739 &        3067 &          3 &     14715 &        3067 &          3 \\
+17 &          ae.godaddy.com &          6.8MB &           6.8MB &   Medium &     92350 &        8111 &      31031 &     92352 &        8112 &      31031 \\
+18 &  store.steampowered.com &          7.1MB &           6.9MB &   Medium &     17373 &       13846 &      11567 &     15129 &       13846 &      11567 \\
+19 &           www.indeed.ae &          7.3MB &           6.3MB &   Medium &     61220 &        4714 &      20372 &     42071 &        2464 &      19859 \\\midrule
+20 &        www.typeform.com &          8.1MB &           3.7MB &    Large &    102582 &        8770 &       1044 &     43485 &        4138 &       1044 \\
+21 &    www.researchgate.net &          8.1MB &           4.7MB &    Large &    116086 &        5196 &      27014 &     77066 &         560 &      27014 \\
+22 &            www.yelp.com &          8.7MB &           8.4MB &    Large &     56665 &       17865 &      43263 &     47658 &       17865 &      43263 \\
+23 &              kakaku.com &          9.0MB &           6.3MB &    Large &    101395 &       13735 &       6548 &     78069 &        9104 &       6548 \\
+24 &      steamcommunity.com &          9.1MB &           1.5MB &    Large &     22514 &        1940 &       8093 &     20193 &         538 &       8093 \\
+25 &         www.tistory.com &          9.6MB &           9.6MB &    Large &     24184 &         495 &       7023 &     24082 &         495 &       7023 \\
+26 &         www.netflix.com &           11MB &            11MB &    Large &      1083 &       23732 &       5781 &      1083 &       23732 &       5781 \\
+27 &       www.worldbank.org &           11MB &            12MB &    Large &     60677 &       62704 &      63298 &     57052 &       64838 &      63298 \\
+28 &          www.ltn.com.tw &           28MB &            28MB &    Large &    225749 &        6517 &      25981 &    223069 &        6102 &      25981 \\
+29 &      www.thetimes.co.uk &           31MB &            26MB &    Large &    354557 &       25924 &        787 &    338192 &       25500 &        768 \\
+\bottomrule
+\end{tabular}
+}
+
+\caption{The subjects used during the experiments (OG = Original, DC = De-Cluttered, LOC = Lines of Code).}
+\label{tab:sample_of_subject}
+\end{table*}
+
+
+%%% --- Experimental Variables --- %%%
+
+\subsection{Experimental Variables}
+
+In our study, the \textit{cluttering state} is regarded as the independent variable. The independent variable is both cluttered and de-cluttered once for each selected subject. The \textit{energy consumption (in joules)} is regarded as the dependent variable which is measured in the performed experiments. The energy consumption is calculated by multiplying the \textit{power consumption (in watts)} and the \textit{PLT (in seconds)}.
+
+To reduce the effect of the page size on the results, the size categories introduced in Section \ref{subsec:subjects_selection} are used as a blocking variable. Next, to reduce the effect of co-factors such as the browser type, network type, and device on the results, these co-factors are fixed to a single value. 
+
+%%% --- Experimental Hypotheses --- %%%
+
+\subsection{Experimental Hypotheses}
+
+To test the research question, we have defined the following hypotheses. The null hypothesis states that the average energy consumption for cluttered mobile web apps is equal to the average energy consumption of de-cluttered mobile web apps:
+$$H_0: \mu_{E_{cluttered}} = \mu_{E_{de-cluttered}}$$
+where $E$ is the measured energy consumption and the subscript specifies the treatment.
+The alternative hypothesis states that the average energy consumption for cluttered mobile web apps is not equal to the average energy consumption of de-cluttered mobile web apps:
+$$H_a: \mu_{E_{cluttered}} \neq \mu_{E_{de-cluttered}}$$
+
+
+%%% --- Experiment Design --- %%%
+
+\subsection{Experiment Design}
+
+The experiment is performed according to the following method: for each selected subject (which are described in Section 4.2) we have each treatment applied. This entails that there is a cluttered and de-cluttered version of each subject. In this way, each block of the mobile web app size is automatically balanced (crossover design). Both versions (cluttered and de-cluttered) of the mobile web app are loaded (in random order) on a smartphone to measure the power consumption and PLT. Our experiment design has the structure: 1 factor - 2 treatments \cite{wohlin2012experimentation}. The cluttering state is the factor and \textit{<cluttered, de-cluttered>} are the treatments. The energy consumption is the measured outcome of the experiment. We repeat each trial (a combination of subject and treatment) 15 times to mitigate the effect of measurement errors. To summarize, the energy consumption of each mobile web app is measured 15 times for the cluttered version and 15 times for the de-cluttered version. Hence, as there are 10 subjects in each of the three blocks \textit{<small, medium, large>}, there are:
+3 (blocks) $x$ (10 (cluttered mobile web apps) $+$ 10 (de-cluttered mobile web apps)) $x$ 15 (trial repetitions) $=$ 900 measurements.
+
+\subsection{Data Analysis}
+
+
+% exploration
+First of all, the resulting energy consumption data is visualized and explored using multiple \textcolor{blue}{scatter and box plots} to visually analyze the distribution of the data.
+% check for normality
+Afterward, we check for normality using a Q-Q plot and the Shapiro-Wilk test with $\alpha = 0.05$ to decide which statistical test can be applied to test our hypothesis.
+% hypothesis testing
+\textcolor{blue}{Given the results provided by the two previous steps, we apply a paired t-test if the data is normally distributed. The paired t-test is done using the energy consumption measurements as data and the two treatments (cluttered and de-cluttered) as the two populations that have to be compared. In the case that the data is not normally distributed, we would use the Wilcoxon signed-rank test instead of the paired t-test. Following that we have three blocks, we split the data into three parts and execute the paired t-test per page size block: small, medium, and large. We then use the Bonferroni correction to keep the total p-value at 0.05. The effect size is the quantitative measure of the strength of a phenomenon. In our study, this refers to the actual difference in energy consumption if the cluttered and de-cluttered energy consumption differed significantly. As this is not the case in our study, the effect size is irrelevant. }
+
+
+
+%\textcolor{red}{Page limit: 3}
