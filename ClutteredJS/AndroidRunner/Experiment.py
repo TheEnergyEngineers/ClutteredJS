@@ -11,7 +11,7 @@ from .Devices import Devices
 from .Profilers import Profilers
 from .Scripts import Scripts
 from .util import ConfigError, makedirs, slugify_dir
-
+from . import Server
 
 # noinspection PyUnusedLocal
 class Experiment(object):
@@ -41,6 +41,14 @@ class Experiment(object):
         if restart:
             for device in self.devices:
                 self.prepare_device(device, restart=True)
+
+        self.start_daemon_server()
+
+    def start_daemon_server(self):
+        daemon = Thread(name='daemon_server', target=Server.start_server)
+        print("Starting Daemon Server")
+        daemon.setDaemon(True)
+        daemon.start()
 
     def prepare_device(self, device, restart=False):
         """Prepare the device for experiment"""

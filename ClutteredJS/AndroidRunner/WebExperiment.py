@@ -7,13 +7,13 @@ from .BrowserFactory import BrowserFactory
 from .Experiment import Experiment
 from .util import makedirs, slugify_dir
 from . import Adb
+from . import Server
 
 class WebExperiment(Experiment):
     def __init__(self, config, progress, restart):
         super(WebExperiment, self).__init__(config, progress, restart)
         self.browsers = [BrowserFactory.get_browser(b)(config) for b in config.get('browsers', ['chrome'])]
         Tests.check_dependencies(self.devices, [b.package_name for b in self.browsers])
-        self.duration = Tests.is_integer(config.get('duration', 0)) / 1000
 
     def run(self, device, path, run, browser_name):
         browser = None
@@ -53,12 +53,11 @@ class WebExperiment(Experiment):
     def interaction(self, device, path, run, *args, **kwargs):
         browser = args[0]
         
-        # Update path for JSCleaned
-        path = path + "/?JSCleaner.html"
+        Server.reset_pageload()
         browser.load_url(device, path)
         super(WebExperiment, self).interaction(device, path, run, *args, **kwargs)
 
-        time.sleep(self.duration)
+        Server.wait_for_pageload()
 
     def after_run(self, device, path, run, *args, **kwargs):
         browser = args[0]

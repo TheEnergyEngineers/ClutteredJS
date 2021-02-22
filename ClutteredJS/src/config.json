@@ -1,43 +1,16 @@
 {
   "type": "web",
   "devices": {
-    "pixel3": {}
+    "nexus": {}
   },
-  "repetitions": 15,
-  "duration": 60000,
+  "repetitions": 2,
   "browsers": ["chrome"],
   "monkeyrunner_path": "~/Android/Sdk/tools/bin/monkeyrunner",
   "systrace_path": "~/Android/Sdk/platform-tools/systrace/systrace.py",
-  "powerprofile_path": "android-runner/ClutteredJS/Scripts/power_profile.xml", 
+  "powerprofile_path": "ClutteredJS/src/Scripts/power_profile.xml", 
   "paths": [
-    "https://fc2.com",
-    "https://telegram.org",
-    "https://www.nih.gov",
-    "https://www.office.com",
-    "https://duckduckgo.com",
-    "https://www.ucsc.edu",
-    "https://www.colorado.edu",
-    "https://pixabay.com",
-    "https://utk.edu",
-    "https://www.sindonews.com",
-    "https://www.osha.gov",
-    "https://missouri.edu",
-    "https://www.booking.com",
-    "https://www.mdpi.com",
-    "https://www.raspberrypi.org",
-    "https://www.homedepot.com",
-    "https://ae.godaddy.com",
-    "https://store.steampowered.com",
-    "https://www.indeed.ae",
-    "https://www.researchgate.net",
-    "https://www.yelp.com",
-    "https://kakaku.com",
-    "https://steamcommunity.com",
-    "https://www.tistory.com",
-    "https://www.netflix.com",
-    "https://www.worldbank.org",
-    "https://www.ltn.com.tw",
-    "https://www.thetimes.co.uk"
+    "http://beta.abijith.net/heavy.html",
+    "http://beta.abijith.net/light.html"
   ],
   "profilers": {
     "batterystats": {
@@ -52,5 +25,5 @@
     "after_run": "Scripts/after_run.py",
     "after_experiment": "Scripts/after_experiment.py"
   },
-  "time_between_run": 120000
+  "time_between_run": 1200
 }
